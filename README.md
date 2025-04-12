@@ -1,4 +1,3 @@
----
 
 ### 📚 EduFlash – AI-Powered Study Companion  
 
