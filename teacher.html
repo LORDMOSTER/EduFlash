@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Student Learning Tracker
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Student Learning Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class'
+      }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+      .dark-mode-toggle {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="font-roboto bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <header class="bg-blue-600 dark:bg-gray-800 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Student Learning Tracker</h1>
+        <nav class="ml-auto">
+          <ul class="flex space-x-4">
+            <li><a class="hover:underline" href="#">Home</a></li>
+            <li><a class="hover:underline" href="#">Students</a></li>
+            <li><a class="hover:underline" href="#">Reports</a></li>
+            <li><a class="hover:underline" href="#">Settings</a></li>
+          </ul>
+        </nav>
+        <button onclick="toggleDarkMode()" class="dark-mode-toggle text-white text-xl focus:outline-none ml-4" title="Toggle Dark Mode">
+          <i id="mode-icon" class="fas fa-moon"></i>
+        </button>
+      </div>
+    </header>
+  <main class="container mx-auto p-4">
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     Top Students Work Hours
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     <div class="bg-white p-4 rounded shadow">
+      <a href="students.html">
+        <img alt="Photo of Student 1" class="rounded-full mb-4 mx-auto" src="image/user-1.png"/>
+        <h3 class="text-lg font-bold mb-2 text-center">Mithra</h3>
+      </a>
+      <p>GeeksforGeeks: 4 hours</p>
+      <p>W3Schools: 4 hours</p>
+      <p>HackerRank: 5 hours</p>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Photo of Student 2" class="rounded-full mb-4 mx-auto" src="image/user-2.png"/>
+      <h3 class="text-lg font-bold mb-2 text-center">
+       Monisha
+      </h3>
+      <p>
+       GeeksforGeeks: 4 hours
+      </p>
+      <p>
+       W3Schools: 5 hours
+      </p>
+      <p>
+       HackerRank: 3 hours
+      </p>
+     </div>
+     <div class="bg-white p-4 rounded shadow">
+      <img alt="Photo of Student 3" class="rounded-full mb-4 mx-auto" src="image/user-3.png"/>
+      <h3 class="text-lg font-bold mb-2 text-center">
+       Srihari
+      </h3>
+      <p>
+       GeeksforGeeks: 4 hours
+      </p>
+      <p>
+       W3Schools: 3 hour
+      </p>
+      <p>
+       HackerRank: 4 hours
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="mt-8">
+    <h2 class="text-xl font-bold mb-4">
+        Excellent performance on HackerRank
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Gold Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-1.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Mithra
+      </h3>
+      <p>
+       Congratulations! You have earned a Gold Badge .
+      </p>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Silver Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-2.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Srihari
+      </h3>
+      <p>
+       Congratulations! You have earned a Silver Badge .
+      </p>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Bronze Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-3.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Subasri
+      </h3>
+      <p>
+       Congratulations! You have earned a Bronze Badge  .
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="mt-8">
+    <h2 class="text-xl font-bold mb-4">
+     Outstanding performance on GeeksforGeeks
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Gold Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-1.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Maithish
+      </h3>
+      <p>
+       Congratulations! You have earned a Gold Badge.
+      </p>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Silver Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-2.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Sowmiya
+      </h3>
+      <p>
+       Congratulations! You have earned a Silver Badge .
+      </p>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Bronze Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-3.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Sunmathi
+      </h3>
+      <p>
+       Congratulations! You have earned a Bronze Badge .
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="mt-8">
+    <h2 class="text-xl font-bold mb-4">
+        Excellent performance on W3Schools
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Gold Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-1.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Monisha
+      </h3>
+      <p>
+       Congratulations! You have earned a Gold Badge .
+      </p>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Silver Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-2.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Keerthika
+      </h3>
+      <p>
+       Congratulations! You have earned a Silver Badge.
+      </p>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+      <img alt="Bronze Badge" class="w-16 h-16 mx-auto mb-4" src="image/badge-3.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+       Madhu
+      </h3>
+      <p>
+       Congratulations! You have earned a Bronze Badge .
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="mt-8">
+    <h2 class="text-xl font-bold mb-4">
+        Catch up with your Competitors
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+     <div class="bg-white p-4 rounded shadow text-center">
+     <a href="https://www.geeksforgeeks.org/">
+      <img alt="Gold Badge" class="w-16 h-16 mx-auto mb-4" src="image/app-1.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+        GeeksforGeeks
+      </h3>
+      <p>
+       Let's GO
+      </p>
+     </a>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+     <a href="https://www.w3schools.com/">
+      <img alt="Silver Badge" class="w-16 h-16 mx-auto mb-4" src="image/app-2.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+        W3Schools
+      </h3>
+      <p>
+        Let's GO
+      </p>
+     </a>
+     </div>
+     <div class="bg-white p-4 rounded shadow text-center">
+     <a href="https://www.hackerrank.com/">
+      <img alt="Bronze Badge" class="w-16 h-16 mx-auto mb-4" src="image/app-3.jpg"/>
+      <h3 class="text-lg font-bold mb-2">
+        HackerRank
+      </h3>
+      <p>
+        Let's GO
+      </p>
+     </a>
+     </div>
+    </div>
+   </section>
+   <section class="mb-8">
+    <h2 class="text-xl font-bold mb-4">
+     Student Work Hours Table
+    </h2>
+    <div class="overflow-x-auto">
+     <table class="min-w-full bg-white">
+      <thead>
+       <tr>
+        <th class="py-2 px-4 border-b">
+         Student
+        </th>
+        <th class="py-2 px-4 border-b">
+         GeeksforGeeks
+        </th>
+        <th class="py-2 px-4 border-b">
+         W3Schools
+        </th>
+        <th class="py-2 px-4 border-b">
+         HackerRank
+        </th>
+        <th class="py-2 px-4 border-b">
+         Total Hours
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-1.png"/>
+            Mithra
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         5
+        </td>
+        <td class="py-2 px-4 border-b">
+         13
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-2.png"/>
+            Monisha
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         5
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         12
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-3.png"/>
+            Srihari
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         11
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-4.png"/>
+            Maithis
+        </td>
+        <td class="py-2 px-4 border-b">
+         5
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         10
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-5.png"/>
+            Sowmiya
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         9
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-6.png"/>
+            Sunmathi
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         9
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-7.png"/>
+            Subasri
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         9
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-8.png"/>
+            Madhu
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         9
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-9.png"/>
+            Subramani
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         8
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-10.png"/>
+            Parimala
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         8
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-11.jpg"/>
+            Karthika
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         8
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-12.jpg"/>
+            Nikitha
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         7
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-13.jpg"/>
+            Keerthika
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         7
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-14.jpg"/>
+            Kowsika
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         6
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-15.jpg"/>
+            Mega
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         6
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-16.jpg"/>
+            Madhan
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         3
+        </td>
+        <td class="py-2 px-4 border-b">
+         5
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-17.jpg"/>
+            Jeeva
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-18.jpg"/>
+            Yasika
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+        <td class="py-2 px-4 border-b">
+         4
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-19.jpg"/>
+            Shubha
+        </td>
+        <td class="py-2 px-4 border-b">
+         0
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b flex items-center">
+            <img alt="Photo of Student 1" class="w-8 h-8 rounded-full mr-2" src="image/user-20.jpg"/>
+            Pavithra
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         0
+        </td>
+        <td class="py-2 px-4 border-b">
+         1
+        </td>
+        <td class="py-2 px-4 border-b">
+         2
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </section>
+   <section>
+    <h2 class="text-xl font-bold mb-4">
+     Overall Student Usage
+    </h2>
+    <div class="bg-white p-4 rounded shadow">
+     <canvas id="overallStudentUsage">
+     </canvas>
+    </div>
+   </section>
+  </main>
+  <footer class="bg-blue-600 text-white p-4 mt-8">
+   <div class="container mx-auto text-center">
+    <p>
+     
+    </p>
+   </div>
+  </footer>
+  <script>
+    const ctx = document.getElementById('overallStudentUsage').getContext('2d');
+   const overallStudentUsage = new Chart(ctx, {
+    type: 'bar',
+    data: {
+     labels: ['Mithra', 'Monisha', 'Srihari', 'Maithish', 'Sowmiya', 'Sunmathi', 'Subasri', 'Madhu', 'Subramani', 'Parimala', 'Karthika', 'Nikitha', 'Keerthi', 'Kowsi', 'Mega', 'Madhan', 'Jeeva', 'yashi', 'Shubha', 'Pavithra'],
+     datasets: [
+      {
+       label: 'GeeksforGeeks',
+       data: [4, 4, 4,5,4,4,3,3,2,4,3,3,4,3,2,1,2,1,0,1],
+       backgroundColor: 'rgba(54, 162, 235, 0.2)',
+       borderColor: 'rgba(54, 162, 235, 1)',
+       borderWidth: 1
+      },
+      {
+       label: 'W3Schools',
+       data: [4,5,3,3,3,2,2,4,3,2,2,2,2,2,2,1,1,1,1,0],
+       backgroundColor: 'rgba(255, 206, 86, 0.2)',
+       borderColor: 'rgba(255, 206, 86, 1)',
+       borderWidth: 1
+      },
+      {
+       label: 'HackerRank',
+       data: [5,3,4,2,3,3,4,2,3,2,3,2,1,1,2,3,1,2,1,1],
+       backgroundColor: 'rgba(75, 192, 192, 0.2)',
+       borderColor: 'rgba(75, 192, 192, 1)',
+       borderWidth: 1
+      }
+     ]
+    },
+    options: {
+     scales: {
+      y: {
+       beginAtZero: true
+      }
+     }
+    }
+   });
+  </script>
+ </body>
+</html>
+<script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("mode-icon");
+      html.classList.toggle("dark");
+      if (html.classList.contains("dark")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
+    }
+  </script>
+</body>

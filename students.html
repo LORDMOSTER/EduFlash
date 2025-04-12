@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Student Performance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    a:hover {
+      transition: transform 0.3s ease-in-out;
+      transform: scale(1.05);
+    }
+    .profile-picture {
+      width: 40px; /* Adjust the width */
+      height: 40px; /* Adjust the height */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+  <header class="bg-blue-600 dark:bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Student Performance</h1>
+      <nav class="ml-auto">
+        <ul class="flex space-x-4">
+          <li><a class="hover:underline" href="teacher.html">Back to Tracker</a></li>
+          <li><a class="hover:underline" href="student.html">Students</a></li> <!-- Ensure correct path -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="container mx-auto p-4">
+    <section class="mb-8">
+      <h2 class="text-xl font-bold mb-4">Overall Performance</h2>
+      <!-- Mithra's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-1.png" alt="Mithra's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Mithra</h3>
+          <p>Total Time Spent: 20 hours</p>
+          <p>Quiz Leaderboard Position: 1st</p>
+          <p id="status-mithra" class="status"></p>
+        </div>
+      </div>
+      <!-- Monisha's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-10.png" alt="Monisha's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Monisha</h3>
+          <p>Total Time Spent: 15 hours</p>
+          <p>Quiz Leaderboard Position: 2nd</p>
+          <p id="status-monisha" class="status"></p>
+        </div>
+      </div>
+      <!-- Srihari's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-11.jpg" alt="Srihari's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Srihari</h3>
+          <p>Total Time Spent: 18 hours</p>
+          <p>Quiz Leaderboard Position: 3rd</p>
+          <p id="status-srihari" class="status"></p>
+        </div>
+      </div>
+      <!-- Sunmathi's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-12.jpg" alt="Sunmathi's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Sunmathi</h3>
+          <p>Total Time Spent: 22 hours</p>
+          <p>Quiz Leaderboard Position: 4th</p>
+          <p id="status-sunmathi" class="status"></p>
+        </div>
+      </div>
+      <!-- Subasri's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-13.jpg" alt="Subasri's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Subasri</h3>
+          <p>Total Time Spent: 17 hours</p>
+          <p>Quiz Leaderboard Position: 5th</p>
+          <p id="status-subasri" class="status"></p>
+        </div>
+      </div>
+      <!-- Madhu's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-14.jpg" alt="Madhu's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Madhu</h3>
+          <p>Total Time Spent: 19 hours</p>
+          <p>Quiz Leaderboard Position: 6th</p>
+          <p id="status-madhu" class="status"></p>
+        </div>
+      </div>
+      <!-- Subarami's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-15.jpg" alt="Subarami's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Subarami</h3>
+          <p>Total Time Spent: 16 hours</p>
+          <p>Quiz Leaderboard Position: 7th</p>
+          <p id="status-subarami" class="status"></p>
+        </div>
+      </div>
+      <!-- Parimala's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-16.jpg" alt="Parimala's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Parimala</h3>
+          <p>Total Time Spent: 21 hours</p>
+          <p>Quiz Leaderboard Position: 8th</p>
+          <p id="status-parimala" class="status"></p>
+        </div>
+      </div>
+      <!-- Karthiga's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-17.jpg" alt="Karthiga's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Karthiga</h3>
+          <p>Total Time Spent: 14 hours</p>
+          <p>Quiz Leaderboard Position: 9th</p>
+          <p id="status-karthiga" class="status"></p>
+        </div>
+      </div>
+      <!-- Nikitha's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-18.jpg" alt="Nikitha's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Nikitha</h3>
+          <p>Total Time Spent: 13 hours</p>
+          <p>Quiz Leaderboard Position: 10th</p>
+          <p id="status-nikitha" class="status"></p>
+        </div>
+      </div>
+      <!-- Kowiska's Performance -->
+      <div class="bg-white p-6 rounded shadow mb-4 flex items-center">
+        <img src="image/user-19.jpg" alt="Kowiska's Profile Picture" class="rounded-full mr-4 profile-picture">
+        <div>
+          <h3 class="text-lg font-bold mb-2">Student Name: Kowiska</h3>
+          <p>Total Time Spent: 12 hours</p>
+          <p>Quiz Leaderboard Position: 11th</p>
+          <p id="status-kowiska" class="status"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function setRandomStatus(elementId) {
+      const statusElement = document.getElementById(elementId);
+      const isOnline = Math.random() < 0.5;
+      statusElement.textContent = isOnline ? 'Online' : 'Offline';
+      statusElement.className = isOnline ? 'text-green-500' : 'text-red-500';
+    }
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      setRandomStatus('status-mithra');
+      setRandomStatus('status-monisha');
+      setRandomStatus('status-srihari');
+      setRandomStatus('status-sunmathi');
+      setRandomStatus('status-subasri');
+      setRandomStatus('status-madhu');
+      setRandomStatus('status-subarami');
+      setRandomStatus('status-parimala');
+      setRandomStatus('status-karthiga');
+      setRandomStatus('status-nikitha');
+      setRandomStatus('status-kowiska');
+    });
+  </script>
+</body>
+</html>

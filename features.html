@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>Features - EduFlash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+  <header class="bg-blue-600 dark:bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">
+        <i class="fas fa-lightbulb"></i> EduFlash Features
+      </h1>
+      <nav class="flex items-center space-x-4">
+        <ul class="flex space-x-4">
+          <li><a href="index.html" class="hover:underline"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="dashboard.html" class="hover:underline"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="community.html" class="hover:underline"><i class="fas fa-users"></i> Community</a></li>
+          <li><a href="#" class="hover:underline"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+        <button onclick="toggleDarkMode()" class="text-white text-xl focus:outline-none ml-4" title="Toggle Dark Mode">
+          <i id="mode-icon" class="fas fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Interactive Flashcards Feature -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-clone text-4xl mb-4 text-blue-500"></i>
+      <h3 class="text-lg font-bold mb-2">Interactive Flashcards</h3>
+      <p class="text-center">Create and customize flashcards with text, images, and voice input.</p>
+    </div>
+  
+    <!-- Quizzes Feature -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-question-circle text-4xl mb-4 text-green-500"></i>
+      <h3 class="text-lg font-bold mb-2">Quizzes</h3>
+      <p class="text-center">Test your knowledge with dynamic quizzes generated from your flashcards.</p>
+    </div>
+  
+    <!-- Personalized Study Plans Feature -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-calendar-alt text-4xl mb-4 text-purple-500"></i>
+      <h3 class="text-lg font-bold mb-2">Personalized Study Plans</h3>
+      <p class="text-center">Organize your study sessions with tailored schedules and activities.</p>
+    </div>
+  
+    <!-- Leaderboard Feature -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-trophy text-4xl mb-4 text-yellow-500"></i>
+      <h3 class="text-lg font-bold mb-2">Leaderboard</h3>
+      <p class="text-center">Compete with friends and track your progress on the leaderboard.</p>
+    </div>
+  
+    <!-- Community Engagement Feature -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-users text-4xl mb-4 text-red-500"></i>
+      <h3 class="text-lg font-bold mb-2">Community Engagement</h3>
+      <p class="text-center">Connect with other learners and share your achievements.</p>
+    </div>
+  
+    <!-- Additional Feature 1 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-chart-line text-4xl mb-4 text-indigo-500"></i>
+      <h3 class="text-lg font-bold mb-2">Progress Tracking</h3>
+      <p class="text-center">Monitor your learning progress with detailed analytics and reports.</p>
+    </div>
+  
+    <!-- Additional Feature 2 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-cogs text-4xl mb-4 text-teal-500"></i>
+      <h3 class="text-lg font-bold mb-2">Customizable Settings</h3>
+      <p class="text-center">Adjust settings to personalize your learning experience.</p>
+    </div>
+  
+    <!-- Additional Feature 3 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+      <i class="fas fa-bell text-4xl mb-4 text-orange-500"></i>
+      <h3 class="text-lg font-bold mb-2">Notifications</h3>
+      <p class="text-center">Stay updated with reminders and notifications for your study plans.</p>
+    </div>
+  </main>
+
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("mode-icon");
+      html.classList.toggle("dark");
+      if (html.classList.contains("dark")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <title>LearnDeck - Flashcard Learning App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .mic-button.active {
+      background-color: #ff0000;
+    }
+    img.preview {
+      max-height: 100px;
+      margin-top: 10px;
+    }
+    .flashcard {
+      border: 2px solid #4A5568;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .flashcard:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .quiz-section {
+      margin-top: 20px;
+    }
+    .leaderboard {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-white transition-colors duration-300">
+  <header class="bg-blue-600 dark:bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">
+        <i class="fas fa-book-reader"></i> LearnDeck
+      </h1>
+      <nav class="flex items-center space-x-4">
+        <ul class="flex space-x-4">
+          <li><a href="index.html" class="hover:underline"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="features.html" class="hover:underline"><i class="fas fa-cogs"></i> Features</a></li>
+          <li><a href="dashboard.html" class="hover:underline"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a href="community.html" class="hover:underline"><i class="fas fa-users"></i> Community</a></li>
+          <li><a href="#" class="hover:underline"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+        <!-- Dark Mode Toggle Button -->
+        <button onclick="toggleDarkMode()" class="text-white text-xl focus:outline-none ml-4" title="Toggle Dark Mode">
+          <i id="mode-icon" class="fas fa-moon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto p-4">
+    <!-- Flashcard Creation Tools -->
+    <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+      <h2 class="text-xl font-bold mb-4"><i class="fas fa-plus-circle"></i> Create Flashcards</h2>
+      <form class="space-y-4" id="flashcardForm">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Subject</label>
+          <select id="flashcard-subject" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white">
+            <option>Mathematics</option>
+            <option>Science</option>
+            <option>History</option>
+            <option>Language Arts</option>
+            <option>Geography</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Question</label>
+          <textarea id="flashcard-question" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white" rows="3" placeholder="Enter question"></textarea>
+          <input id="flashcard-question-image" type="file" accept="image/*" class="mt-2" onchange="previewImage(this, 'question-preview')" />
+          <img id="question-preview" class="preview" />
+          <button type="button" onclick="startVoiceInput('flashcard-question', this)" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded-md mic-button">
+            <i class="fas fa-microphone"></i> Voice Input
+          </button>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Answer</label>
+          <textarea id="flashcard-answer" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white" rows="3" placeholder="Enter answer"></textarea>
+          <input id="flashcard-answer-image" type="file" accept="image/*" class="mt-2" onchange="previewImage(this, 'answer-preview')" />
+          <img id="answer-preview" class="preview" />
+          <button type="button" onclick="startVoiceInput('flashcard-answer', this)" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded-md mic-button">
+            <i class="fas fa-microphone"></i> Voice Input
+          </button>
+        </div>
+      </form>
+      <button type="button" onclick="addFlashcard()" class="bg-green-600 text-white px-4 py-2 rounded-md">Save Flashcard</button>
+    </section>
+
+    <!-- Display Flashcards -->
+    <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <h2 class="text-xl font-bold mb-4"><i class="fas fa-clone"></i> Your Flashcards</h2>
+      <div id="flashcardDisplay" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- Quiz Taking Session -->
+    <section class="quiz-section bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <h2 class="text-xl font-bold mb-4"><i class="fas fa-question-circle"></i> Take Quiz</h2>
+      <div id="quizContainer"></div>
+      <button type="button" onclick="generateQuiz()" class="bg-blue-600 text-white px-4 py-2 rounded-md">Start Quiz</button>
+    </section>
+
+    <!-- Leaderboard -->
+    <section class="leaderboard bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <h2 class="text-xl font-bold mb-4"><i class="fas fa-trophy"></i> Leaderboard</h2>
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr>
+            <th class="border-b dark:border-gray-600 p-2">Rank</th>
+            <th class="border-b dark:border-gray-600 p-2">Name</th>
+            <th class="border-b dark:border-gray-600 p-2">Points</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardTable">
+          <!-- Leaderboard entries will be populated here -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const icon = document.getElementById("mode-icon");
+      html.classList.toggle("dark");
+      if (html.classList.contains("dark")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
+    }
+
+    function previewImage(input, previewId) {
+      const preview = document.getElementById(previewId);
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = e => preview.src = e.target.result;
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = '';
+      }
+    }
+
+    function addFlashcard() {
+      const subject = document.getElementById('flashcard-subject').value;
+      const question = autocorrect(document.getElementById('flashcard-question').value);
+      const answer = autocorrect(document.getElementById('flashcard-answer').value);
+
+      const questionImg = document.getElementById('question-preview').src || '';
+      const answerImg = document.getElementById('answer-preview').src || '';
+
+      const card = document.createElement('div');
+      card.className = "flashcard bg-gray-100 p-4 rounded-lg shadow";
+
+      card.innerHTML = `
+        <h3 class="font-bold text-lg mb-2">${subject}</h3>
+        <p><strong>Q:</strong> ${question}</p>
+        ${questionImg && questionImg.includes("base64") ? `<img src="${questionImg}" class="mt-2 rounded-md max-h-32">` : ''}
+        <p class="mt-2"><strong>A:</strong> ${answer}</p>
+        ${answerImg && answerImg.includes("base64") ? `<img src="${answerImg}" class="mt-2 rounded-md max-h-32">` : ''}
+      `;
+      document.getElementById('flashcardDisplay').appendChild(card);
+
+      document.getElementById('flashcardForm').reset();
+      document.getElementById('question-preview').src = '';
+      document.getElementById('answer-preview').src = '';
+    }
+
+    function autocorrect(text) {
+      const corrections = {
+        "teh": "the",
+        "recieve": "receive",
+        "adn": "and",
+        "definately": "definitely",
+        "occured": "occurred",
+        "seperate": "separate",
+        "untill": "until",
+        "wich": "which",
+        "accomodate": "accommodate",
+        "becuase": "because",
+        "neccessary": "necessary",
+        "occurence": "occurrence",
+        "publically": "publicly",
+        "reccomend": "recommend",
+        "suprise": "surprise",
+        "tommorow": "tomorrow",
+        "wierd": "weird",
+        "adress": "address",
+        "arguement": "argument",
+        "calender": "calendar",
+        "cemetary": "cemetery",
+        "concious": "conscious",
+        "embarass": "embarrass",
+        "enviroment": "environment",
+        "existance": "existence",
+        "goverment": "government",
+        "harrass": "harass",
+        "independant": "independent",
+        "jewelery": "jewelry",
+        "maintainance": "maintenance",
+        "millenium": "millennium",
+        "occuring": "occurring",
+        "parliment": "parliament",
+        "posession": "possession",
+        "priviledge": "privilege",
+        "pronounciation": "pronunciation",
+        "refered": "referred",
+        "secratary": "secretary",
+        "sieze": "seize",
+        "supercede": "supersede",
+        "thier": "their",
+        "threshhold": "threshold",
+        "twelth": "twelfth",
+        "unforseen": "unforeseen",
+        "wierd": "weird",
+        "writting": "writing"
+      };
+      return text.split(' ').map(word => corrections[word] || word).join(' ');
+    }
+
+    function startVoiceInput(textareaId, button) {
+      const micButton = button;
+      micButton.classList.add("active");
+    
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+    
+      recognition.start();
+    
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        document.getElementById(textareaId).value += transcript;
+      };
+    
+      recognition.onerror = function() {
+        alert("Voice input failed. Please try again.");
+      };
+    
+      recognition.onend = function() {
+        micButton.classList.remove("active");
+      };
+    }
+
+    const permanentFlashcards = [
+      { subject: 'Mathematics', question: 'What is 2 + 2?', answer: '4' },
+      { subject: 'Science', question: 'What is the chemical symbol for water?', answer: 'H2O' },
+      { subject: 'History', question: 'Who was the first President of the United States?', answer: 'George Washington' },
+      { subject: 'Language Arts', question: 'What is a synonym for happy?', answer: 'Joyful' },
+      { subject: 'Geography', question: 'What is the capital of France?', answer: 'Paris' },
+      { subject: 'Mathematics', question: 'What is the square root of 16?', answer: '4' },
+      { subject: 'Science', question: 'What planet is known as the Red Planet?', answer: 'Mars' },
+      { subject: 'History', question: 'In which year did World War II end?', answer: '1945' },
+      { subject: 'Language Arts', question: 'What is the antonym of "cold"?', answer: 'Hot' },
+      { subject: 'Geography', question: 'Which continent is the Sahara Desert located?', answer: 'Africa' }
+    ];
+
+    // Function to generate random quiz questions
+    function generateQuiz() {
+      const quizContainer = document.getElementById('quizContainer');
+      quizContainer.innerHTML = ''; // Clear previous quiz
+    
+      const selectedQuestions = permanentFlashcards.sort(() => 0.5 - Math.random()).slice(0, 10);
+    
+      selectedQuestions.forEach((flashcard, index) => {
+        quizContainer.innerHTML += `
+          <div class="mb-4">
+            <p><strong>Question ${index + 1}:</strong> ${flashcard.question}</p>
+            <ul class="list-disc pl-5">
+              <li><input type="radio" name="quiz${index}" value="${flashcard.answer}"> ${flashcard.answer}</li>
+              <li><input type="radio" name="quiz${index}" value="Incorrect"> Incorrect</li>
+            </ul>
+          </div>
+        `;
+      });
+    
+      quizContainer.innerHTML += `
+        <button type="button" onclick="checkQuizAnswers()" class="bg-green-600 text-white px-4 py-2 rounded-md mt-2">Submit Answers</button>
+      `;
+    }
+    
+    // Function to check quiz answers
+    function checkQuizAnswers() {
+      let correctCount = 0;
+      permanentFlashcards.forEach((flashcard, index) => {
+        const selected = document.querySelector(`input[name="quiz${index}"]:checked`);
+        if (selected && selected.value === flashcard.answer) {
+          correctCount++;
+        }
+      });
+      alert(`You answered ${correctCount} out of 10 questions correctly!`);
+    }
+
+    function populateLeaderboard() {
+      const leaderboardTable = document.getElementById('leaderboardTable');
+      const mockData = [
+        { name: 'Alice', score: 95 },
+        { name: 'Bob', score: 90 },
+        { name: 'Charlie', score: 85 },
+        { name: 'David', score: 80 },
+        { name: 'Eve', score: 75 }
+      ];
+    
+      leaderboardTable.innerHTML = mockData.map((entry, index) => {
+        let medal = '';
+        if (index === 0) medal = '<i class="fas fa-medal text-yellow-500"></i>'; // Gold
+        else if (index === 1) medal = '<i class="fas fa-medal text-gray-500"></i>'; // Silver
+        else if (index === 2) medal = '<i class="fas fa-medal text-orange-500"></i>'; // Bronze
+    
+        return `
+          <tr>
+            <td class="border-b dark:border-gray-600 p-2">${medal || index + 1}</td>
+            <td class="border-b dark:border-gray-600 p-2">${entry.name}</td>
+            <td class="border-b dark:border-gray-600 p-2">${entry.score}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', populateLeaderboard);
+  </script>
+</body>
+</html>
+
+
+    function extractTextFromImage(input, textareaId) {
+      const file = input.files[0];
+      if (file) {
+        Tesseract.recognize(
+          file,
+          'eng',
+          {
+            logger: info => console.log(info)
+          }
+        ).then(({ data: { text } }) => {
+          document.getElementById(textareaId).value = text;
+        });
+      }
+    }
+
+    // Modify existing image input change handlers
+    document.getElementById('flashcard-question-image').addEventListener('change', function() {
+      extractTextFromImage(this, 'flashcard-question');
+    });
+
+    document.getElementById('flashcard-answer-image').addEventListener('change', function() {
+      extractTextFromImage(this, 'flashcard-answer');
+    });
+  </script>
+</body>

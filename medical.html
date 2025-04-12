@@ -1,0 +1,344 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   MedFlash - EduFlash
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   .floating-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+   }
+   .floating-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+   }
+  </style>
+ </head>
+ <body class="font-roboto bg-gray-100 dark:bg-gray-900 dark:text-white">
+  <header class="bg-blue-600 dark:bg-blue-800 text-white p-4 flex justify-between items-center">
+   <div class="flex items-center">
+    <img alt="EduFlash logo, a stylized book with a flash symbol" class="h-10 w-10 mr-2" src="image/medflash-project-image.png"/>
+    <h1 class="text-2xl font-bold">MedFlash</h1>
+   </div>
+   <nav class="flex space-x-4 ml-auto">
+    <ul class="flex space-x-4">
+     <li>
+      <a class="hover:underline" href="#">
+       Home
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline" href="#">
+       Quizzes
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline" href="#">
+       Flashcards
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline" href="#">
+       Leaderboard
+      </a>
+     </li>
+     <li>
+      <a class="hover:underline" href="#">
+       Profile
+      </a>
+     </li>
+   </ul>
+   </nav>
+   <button class="bg-transparent text-gray-800 dark:text-gray-200 px-4 py-2 rounded" id="theme-toggle">
+    <i id="theme-icon" class="fas fa-moon"></i> <!-- Toggle icon -->
+   </button>
+  </header>
+  <main class="p-6">
+   <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 floating-card">
+    <h2 class="text-2xl font-bold mb-4">
+     Welcome to your Deck
+    </h2>
+    <p class="text-gray-700 dark:text-gray-300">
+     Here you can find all the resources you need to excel in your medical studies. Participate in quizzes, create flashcards, and track your progress on the leaderboard.
+    </p>
+   </section>
+   <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 floating-card">
+    <h2 class="text-2xl font-bold mb-4">
+     Upcoming Quizzes
+    </h2>
+    <ul class="space-y-4">
+     <li class="flex justify-between items-center">
+      <div>
+       <h3 class="text-xl font-semibold">
+        Anatomy Quiz
+       </h3>
+       <p class="text-gray-600 dark:text-gray-400">
+        Date: 2023-10-15
+       </p>
+      </div>
+      <button class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded">
+       Participate
+      </button>
+     </li>
+     <li class="flex justify-between items-center">
+      <div>
+       <h3 class="text-xl font-semibold">
+        Physiology Quiz
+       </h3>
+       <p class="text-gray-600 dark:text-gray-400">
+        Date: 2023-10-20
+       </p>
+      </div>
+      <button class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded">
+       Participate
+      </button>
+     </li>
+     <li class="flex justify-between items-center">
+      <div>
+       <h3 class="text-xl font-semibold">
+        Pathology Quiz
+       </h3>
+       <p class="text-gray-600 dark:text-gray-400">
+        Date: 2023-10-25
+       </p>
+      </div>
+      <button class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded">
+       Participate
+      </button>
+     </li>
+    </ul>
+   </section>
+   <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 floating-card">
+    <h2 class="text-2xl font-bold mb-4">
+     Leaderboard
+    </h2>
+    <table class="w-full text-left border border-gray-300 dark:border-gray-600">
+     <thead>
+      <tr>
+       <th class="border-b-2 p-2">Rank</th>
+       <th class="border-b-2 p-2">User</th>
+       <th class="border-b-2 p-2">Points
+       </th>
+       <th class="border-b-2 p-2">
+        Badge
+       </th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+       <td class="border-b p-2">
+        1
+       </td>
+       <td class="border-b p-2">
+        John Doe
+       </td>
+       <td class="border-b p-2">
+        1500
+       </td>
+       <td class="border-b p-2">
+        <img alt="Gold badge for first place" class="h-6 w-6" src="https://placehold.co/24x24"/>
+       </td>
+      </tr>
+      <tr>
+       <td class="border-b p-2">
+        2
+       </td>
+       <td class="border-b p-2">
+        Jane Smith
+       </td>
+       <td class="border-b p-2">
+        1400
+       </td>
+       <td class="border-b p-2">
+        <img alt="Silver badge for second place" class="h-6 w-6" src="https://placehold.co/24x24"/>
+       </td>
+      </tr>
+      <tr>
+       <td class="border-b p-2">
+        3
+       </td>
+       <td class="border-b p-2">
+        Alice Johnson
+       </td>
+       <td class="border-b p-2">
+        1300
+       </td>
+       <td class="border-b p-2">
+        <img alt="Bronze badge for third place" class="h-6 w-6" src="https://placehold.co/24x24"/>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </section>
+   <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 floating-card">
+    <h2 class="text-2xl font-bold mb-4">
+     Create Flashcards
+    </h2>
+    <form>
+     <div class="mb-4">
+      <label class="block text-gray-700 dark:text-gray-300" for="title">
+       Title
+      </label>
+      <input class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300" id="title" placeholder="Enter flashcard title" type="text"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 dark:text-gray-300" for="content">
+       Content
+      </label>
+      <textarea class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300" id="content" placeholder="Enter flashcard content"></textarea>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 dark:text-gray-300" for="image">
+       Image
+      </label>
+      <input class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300" id="image" type="file"/>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 dark:text-gray-300" for="voice">
+       Voice Typing
+      </label>
+      <button class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded" id="voice" type="button">
+       Start Voice Typing
+      </button>
+     </div>
+     <button class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded" type="submit">
+      Create Flashcard
+     </button>
+    </form>
+   </section>
+   <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md floating-card">
+    <h2 class="text-2xl font-bold mb-4">
+     Quiz Participation Details
+    </h2>
+    <ul class="space-y-4">
+     <li>
+      <h3 class="text-xl font-semibold">
+       Anatomy Quiz
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400">
+       Completed on: 2023-10-15
+      </p>
+      <p class="text-gray-600 dark:text-gray-400">
+       Score: 85%
+      </p>
+     </li>
+     <li>
+      <h3 class="text-xl font-semibold">
+       Physiology Quiz
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400">
+       Completed on: 2023-10-20
+      </p>
+      <p class="text-gray-600 dark:text-gray-400">
+       Score: 90%
+      </p>
+     </li>
+     <li>
+      <h3 class="text-xl font-semibold">
+       Pathology Quiz
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400">
+       Completed on: 2023-10-25
+      </p>
+      <p class="text-gray-600 dark:text-gray-400">
+       Score: 88%
+      </p>
+     </li>
+    </ul>
+   </section>
+   <!-- Quiz Taking Section -->
+   <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 floating-card">
+    <h2 class="text-2xl font-bold mb-4">Take a Quiz</h2>
+    <button class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded mb-4" onclick="generateQuiz()">Start Quiz</button>
+    <div id="quizContainer" class="space-y-4"></div>
+   </section>
+    <!-- Create Flashcards Section -->
+    <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 floating-card">
+      <h2 class="text-2xl font-bold mb-4">Create Flashcards</h2>
+      <form id="flashcardForm" class="space-y-4">
+        <div>
+          <label class="block text-gray-700 dark:text-gray-300" for="title">Title</label>
+          <input class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300" id="title" placeholder="Enter flashcard title" type="text"/>
+        </div>
+        <div>
+          <label class="block text-gray-700 dark:text-gray-300" for="content">Content</label>
+          <textarea class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300" id="content" placeholder="Enter flashcard content"></textarea>
+          <button type="button" onclick="startVoiceInput('content', this)" class="bg-blue-600 text-white px-4 py-2 mt-2 rounded-md">
+            <i class="fas fa-microphone"></i> Voice Input
+          </button>
+        </div>
+        <button type="button" onclick="addFlashcard()" class="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded">Create Flashcard</button>
+      </form>
+    </section>
+
+    <!-- Display Flashcards Section -->
+    <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 floating-card">
+      <h2 class="text-2xl font-bold mb-4">Your Flashcards</h2>
+      <div id="flashcardDisplay" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+   </main>
+  <script>
+   const flashcards = [
+     { question: 'What is the capital of France?', answer: 'Paris' },
+     { question: 'What is the chemical symbol for water?', answer: 'H2O' },
+     { question: 'Who was the first President of the United States?', answer: 'George Washington' },
+     { question: 'What is the square root of 16?', answer: '4' },
+     { question: 'What planet is known as the Red Planet?', answer: 'Mars' },
+     // ... add more flashcards up to 30 ...
+   ];
+   
+   function generateQuiz() {
+     const quizContainer = document.getElementById('quizContainer');
+     quizContainer.innerHTML = ''; // Clear previous quiz
+   
+     const selectedQuestions = flashcards.sort(() => 0.5 - Math.random()).slice(0, 5);
+   
+     selectedQuestions.forEach((flashcard, index) => {
+       quizContainer.innerHTML += `
+         <div class="mb-4">
+           <p><strong>Question ${index + 1}:</strong> ${flashcard.question}</p>
+           <input type="text" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300" placeholder="Your answer">
+         </div>
+       `;
+     });
+   
+     quizContainer.innerHTML += `
+       <button class="bg-green-600 dark:bg-green-700 text-white px-4 py-2 rounded" onclick="checkQuizAnswers()">Submit Answers</button>
+     `;
+   }
+   
+   function checkQuizAnswers() {
+     const inputs = document.querySelectorAll('#quizContainer input');
+     let correctCount = 0;
+   
+     inputs.forEach((input, index) => {
+       if (input.value.trim().toLowerCase() === flashcards[index].answer.toLowerCase()) {
+         correctCount++;
+       }
+     });
+   
+     alert(`You answered ${correctCount} out of 5 questions correctly!`);
+   }
+   
+   const themeToggle = document.getElementById('theme-toggle');
+   const themeIcon = document.getElementById('theme-icon');
+   const body = document.body;
+  
+   themeToggle.addEventListener('click', () => {
+     body.classList.toggle('dark');
+     if (body.classList.contains('dark')) {
+       themeIcon.classList.remove('fa-moon');
+       themeIcon.classList.add('fa-sun');
+     } else {
+       themeIcon.classList.remove('fa-sun');
+       themeIcon.classList.add('fa-moon');
+     }
+   });
+  </script>
+ </body>
+</html>
